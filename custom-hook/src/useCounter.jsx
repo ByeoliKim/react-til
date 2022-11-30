@@ -10,6 +10,7 @@ const useCounter = (initialValue) => {
 
     const increaseCount = () => setCount((count) => count + 1);
     const decreaseCount = () => setCount((count) => Math.max(count - 1, 0));
+    //Math.max() 함수를 사용하여 카운트 값이 0 아래로 내려갈 수 없다!
 
     return [count, increaseCount, decreaseCount];
 }
