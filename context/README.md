@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# 컨텍스트 ✨
+- (이거 읽으면 컨텍스트 개념 뿌시는 거다.)
+- 데이터를 무조건 props 를 통해서 전달하는 것보다 컨텍스르를 사용하여 깔끔하게 처리할 수 있을지를 고민하고 적용하즈아.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 컨텍스트가 뭐임? 📝
+- 컴포넌트들 사이에서 데이터를 props 를 통해 전달하는 것이 아닌 컴포넌트 트리를 통해 곧바로 데이터를 전달하는 방식임.
+- 어떤 컴포넌트든 컨텍스트에 있는 데이터에 쉽게 접근 가능.
+- 컨텍스트를 사용하면 데이터를 컴포넌트 트리를 통해 곧바로 하위 컴포넌트에 전달할 수 있음.
 
-## Available Scripts
+# 언제 컨텍스트를 사용해야 됨? 📝
+- 여러 컴포넌트에서 계속해서 접근이 일어날 데이터들이 있는 경우에 쓰셈.
+- Provider 의 모든 하위 컴포넌트가 얼마나 깊이 위치해 있는지 관계없이 컨텍스트의 데이터를 읽을 수 있음.
 
-In the project directory, you can run:
+# 컨텍스트 사용 전 고려할 점은 뭐야? 📝
+- 컴포넌트와 컨텍스트가 연동되면 재사용이 떨어짐.
+- 다른 레벨의 많은 컴포넌트가 데이터를 필요로 하는 경우가 아니묜, 기존 방식대로 props 를 통해 데이터 전달하는 게 나음.
 
-### `yarn start`
+# 컨텍스트 API 📝
+- React.createContext()
+> 컨텍스트를 생성하기 위한 함수 <br/>
+> 컨텍스트 객체를 리턴함.<br/>
+> 기본값으로 undefined 를 넣으면 기본값이 사용되지 않슴다.
+- Context.Provider
+> 모든 컨텍스트 객체는 Provider 라는 컴포넌트를 가짐. <br/>
+> Provider 컴포넌트로 하위 컴포넌트들을 감싸주면 모든 하위 컴포넌트들이 해당 컨텍스트의 데이터에 접근 가능함. <br/>
+> Provider 에는 value 라는 prop 이 있으며, 이것이 데이터로써 하위 컴포넌트들에게 전달됨. <br/>
+> 여러 개의 Provider 컴포넌트를 중첩시켜 사용할 수 있음.
+- Context.Consumer
+> 컨텍스트의 데이터를 구독하는 컴포넌트. <br/>
+> 데이터를 소비한다는 뜻으로 consumer 컴포넌트라고 부름. <br/>
+> consumer 컴포넌트는 컨텍스트 값의 변화를 지켜보다가 값이 변경되면 재렌더링 됨. <br/>
+> 하나의 Provider 컴포넌트는 여러 개의 consumer 컴포넌트와 연결될 수 있음. <br/>
+> 상위 레벨에 매칭되는 Provider 가 없을 경우에는 기본값이 사용됨.
+- Context.displayName
+> 크롬의 리액트 개발자 도구에서 표시되는 컨텍스트 객체의 이름.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# useContext() 📝
+> 함수 컴포넌트에서 컨텍스트를 쉽게 사용할 수 있게 해 주는 훅(Hook)이다. <br/>
+> React.createContext() 함수 호출로 생성된 컨텍스트 객체를 인자로 받아서 현재 컨텍스트의 값을 리턴함. <br/>
+> 컨텍스트의 값이 변경되면 변경된 값과 함께 useContext() 훅을 사용하는 컴포넌트가 재랜더링 됨.
