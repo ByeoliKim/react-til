@@ -2,21 +2,25 @@ import React, { useState } from 'react';
 import { Button, Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
 import nameData from './data.js';
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
+import Detail from './Detail';
 
 function App() {
   //서버에서 가져왔다고 가정하자 'ㅅ'
   //중요한 데이터는 state로 관리해욥
   let [items, itemsFunc] = useState(nameData);
 
+  let navigate = useNavigate();
+
   return (
     <div className="App">
       <Navbar variant="dark" className="nav-wrap">
         <Container>
-          <Navbar.Brand href="#home">별이월드 ⭐️</Navbar.Brand>
+          <Navbar.Brand onClick={() => {navigate('/')}}>별이월드 ⭐️</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">category1</Nav.Link>
-            <Nav.Link href="#pricing">category2</Nav.Link>
+            <Nav.Link onClick={() => {navigate('/')}}>Home</Nav.Link>
+            <Nav.Link onClick={() => {navigate('/detail')}}>Detail</Nav.Link>
+            <Nav.Link onClick={() => {navigate('/event')}}>event</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -27,46 +31,31 @@ function App() {
         <Button variant="dark">more</Button>{' '}
       </div>
 
-      <div className="container">
-        <div className="contain-wrap">
-          <div className="title-wrap">
-            <h2 className="subject">GAME ICON ✨</h2>
-            <span className="subject-s">그랜드 마스터가 될 거예요. 🕶</span>
-          </div>
-          <div className="row">
-            {/* <div className="item col-md-4">
-              <img src={itemImg1} width="100%" alt="상품 이미지1" />
-              <h3>{item[0].title}</h3>
-              <p>{item[0].content}</p>
-              <h4>
-                {item[0].price}
-                <span>원</span>
-              </h4>
+      <Routes>
+        <Route path="/" element={<div className="container">
+          <div className="contain-wrap">
+            <div className="title-wrap">
+              <h2 className="subject">GAME ICON ✨</h2>
+              <span className="subject-s">그랜드 마스터가 될 거예요. 🕶</span>
             </div>
-            <div className="item col-md-4">
-              <img src={itemImg2} width="100%" alt="상품 이미지2" />
-              <h3>{item[1].title}</h3>
-              <p>{item[1].content}</p>
-              <h4>
-                {item[1].price}
-                <span>원</span>
-              </h4>
+            <div className="row">
+              {
+                items.map((item, i) => {
+                  return (
+                    <Item item={items[i]} i={i} key={i} />
+                  );
+                })
+              }
             </div>
-            <div className="item col-md-4">
-              <img src={itemImg3} width="100%" alt="상품 이미지3" />
-              <h3>{item[2].title}</h3>
-              <p>{item[2].content}</p>
-              <h4>
-                {item[2].price}
-                <span>원</span>
-              </h4>
-            </div> */}
-            {items.map((item, i) => {
-              return <Item item={items[i]} i={i} key={i} />;
-            })}
           </div>
-        </div>
-      </div>
+        </div>} />
+        <Route path="/detail" element={<Detail />} />
+        <Route path="/event" element={<Event />}>
+          <Route path="one" element={<div>첫 주문 시 양배추즙 서비스</div>} />
+          <Route path="two" element={<div>생일 기념 쿠폰받기</div>} />
+        </Route>
+        <Route path="*" element={<div>404 not found</div>} />
+      </Routes>
     </div>
   );
 }
@@ -74,8 +63,7 @@ function App() {
 function Item(props) {
   return (
     <>
-      <ul className="item col-md-4">
-        <li>
+      <div className="item col-md-4">
           <img
             src={'./img/item' + (props.i + 1) + '.png'}
             width="50%"
@@ -87,9 +75,18 @@ function Item(props) {
             {props.item.price}
             <span>원</span>
           </h4>
-        </li>
-      </ul>
+      </div>
     </>
   );
 }
+
+function Event() {
+  return (
+    <>
+      <h2>오늘의 이벤트</h2>
+      <Outlet></Outlet>
+    </>
+  )
+}
+
 export default App;
