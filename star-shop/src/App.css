@@ -1,38 +1,75 @@
-.App {
+* {
+  letter-spacing: -1.5px;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.nav-wrap {
+  background: #000;
+}
+.bg-color {
+  padding: 100px 40px;
+  color: #fff;
+  background: #ededed url('img/lol2.jpeg');
+  background-attachment: fixed;
+  background-size: cover;
   text-align: center;
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bg-color p {
+  margin-bottom: 10px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bg-color > h2 {
+  font-style: italic;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -3px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container .contain-wrap {
+  margin: 40px 0;
+}
+.title-wrap {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.title-wrap .subject {
+  color: #000;
+  font-style: italic;
+  font-weight: 900;
+  text-decoration: line-through;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.title-wrap .subject-s {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 14px;
+}
+.row {
+  justify-content: space-between;
+}
+.item {
+  margin: 0 0 20px;
+  padding: 50px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+}
+.item img {
+  display: block;
+  margin: 0 auto 30px;
+}
+.item h3 {
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+@media (min-width: 768px) {
+  .col-md-4 {
+    width: 30%;
   }
 }
