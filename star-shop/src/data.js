@@ -42,6 +42,12 @@ let data = [
       content: '상대 이렐리아 나와도 몰라요',
       price: 130000,
     },
+    {
+      id: 3,
+      title: '화난 도화과',
+      content: '스페셜리스트~',
+      price: 300,
+    },
   ];
   
   export default data;
