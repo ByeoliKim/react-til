@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
 import nameData from './data.js';
@@ -19,8 +19,8 @@ function App() {
           <Navbar.Brand onClick={() => {navigate('/')}}>별이월드 ⭐️</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={() => {navigate('/')}}>Home</Nav.Link>
-            <Nav.Link onClick={() => {navigate('/detail')}}>Detail</Nav.Link>
-            <Nav.Link onClick={() => {navigate('/event')}}>event</Nav.Link>
+            <Nav.Link onClick={() => {navigate('/detail/1')}}>Detail</Nav.Link>
+            <Nav.Link onClick={() => {navigate('/event')}}>Event</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -49,7 +49,7 @@ function App() {
             </div>
           </div>
         </div>} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail items={items} />} />
         <Route path="/event" element={<Event />}>
           <Route path="one" element={<div>첫 주문 시 양배추즙 서비스</div>} />
           <Route path="two" element={<div>생일 기념 쿠폰받기</div>} />
