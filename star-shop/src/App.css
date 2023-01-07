@@ -71,6 +71,9 @@ a {
   font-weight: 900;
   letter-spacing: -2px;
 }
+
+.box { padding:10px; background:#fff38b; }
+
 @media (min-width: 768px) {
   .col-md-4 {
     width: 30%;
