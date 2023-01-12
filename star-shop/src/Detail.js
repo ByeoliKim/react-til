@@ -11,6 +11,7 @@ const Detail = (props) => {
     let [count, setCount] = useState(0);
 
     let {id} = useParams();
+    
     let findId = props.items.find(function(x){
         return x.id == id
     });
@@ -31,7 +32,7 @@ const Detail = (props) => {
             }
             <div className="row">
                 <div className="col-md-6">
-                    <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+                    <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" alt="이미지" />
                 </div>
                 <div className="col-md-6">
                     <h4 className="pt-5">{findId.title}</h4>

@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { Button, Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
 import nameData from './data.js';
-import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
+import { Routes, Route, useNavigate, Outlet } from 'react-router-dom'
 import Detail from './Detail';
 
 function App() {
   //서버에서 가져왔다고 가정하자 'ㅅ'
   //중요한 데이터는 state로 관리해욥
+  // eslint-disable-next-line
   let [items, itemsFunc] = useState(nameData);
 
   let navigate = useNavigate();
@@ -25,7 +26,7 @@ function App() {
         </Container>
       </Navbar>
       <div className="bg-color">
-        <h2>/* Hello World * /</h2>
+        <h2>Hello World</h2>
         <p>지금은 리액트 쇼핑몰 만들기 프로젝트 공부 중입니다.</p>
         <p>리액트 짱이 될 거야. 🐥</p>
         <Button variant="dark">more</Button>{' '}
