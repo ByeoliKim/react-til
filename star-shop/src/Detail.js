@@ -5,7 +5,14 @@ const Detail = (props) => {
 
     useEffect(() => {
         // mount, update 시 여기 코드 실행됨.
-        setTimeout(() => { setAlert(false) }, 2000);
+        let timer = setTimeout(() => { setAlertMsg(false) }, 2000);
+
+        return () => {
+            clearTimeout(timer);
+            //기존 요청은 제거하고 싶을 때 활용하슈
+            //clean up function 은 mount 시 실행 안 됨
+            //unmount 시 실행됨.
+        }
     }, []);
 
     let [count, setCount] = useState(0);
@@ -16,20 +23,29 @@ const Detail = (props) => {
         return x.id == id
     });
 
-    let [alert, setAlert] = useState(true);
+    let [alertMsg, setAlertMsg] = useState(true);
+
+    let [num, setNum] = useState('')
+
+    useEffect(()=>{
+        if (isNaN(num) == true) {
+            alert("숫자만 입력하슈")
+        }
+    }, [num])
 
     return (
         <div className="container">
             {count}
             <button onClick={() => { setCount(count+1) }}>버튼</button>
             {   
-                alert == true
+                alertMsg == true
                 ?
                 <div className="box">
                     2초 이내 구매시 할인
                 </div>
                 : null
             }
+            <input onChange={((e)=>{ setNum(e.target.value) })} />
             <div className="row">
                 <div className="col-md-6">
                     <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" alt="이미지" />

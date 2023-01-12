@@ -4,6 +4,7 @@ import './App.css';
 import nameData from './data.js';
 import { Routes, Route, useNavigate, Outlet } from 'react-router-dom'
 import Detail from './Detail';
+import axios from 'axios';
 
 function App() {
   //서버에서 가져왔다고 가정하자 'ㅅ'
@@ -57,6 +58,19 @@ function App() {
         </Route>
         <Route path="*" element={<div>404 not found</div>} />
       </Routes>
+      
+      <button onClick={() =>{
+        axios.get("https://codingapple1.github.io/shop/data2.json")
+        .then((data) => { 
+          console.log(data.data);
+         })
+         .catch(() => {
+          console.log("실패함 ㅅㄱ")
+         })
+      }}>
+        버튼이라능
+      </button>
+
     </div>
   );
 }
